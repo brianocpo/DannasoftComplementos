@@ -5,7 +5,7 @@
 -- Dumped from database version 9.4.18
 -- Dumped by pg_dump version 10.4 (Ubuntu 10.4-2.pgdg16.04+1)
 
--- Started on 2018-10-04 17:26:31 -05
+-- Started on 2018-10-05 16:39:40 -05
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -23,8 +23,8 @@ SET row_security = off;
 -- Data for Name: s_compania; Type: TABLE DATA; Schema: mod_administracion; Owner: postgres
 --
 
-INSERT INTO mod_administracion.s_compania VALUES (1, 'Dannasoft                ', 'Brian Eduardo Montenegro Tinaj', '1003677422001  ', 'El trbol, calle Caran N-250 y Echeverria          ', '0981747001     ', '062650786      ', 'www.ecuawebhosting.com   ', '               ', '                              ', 'brayanocpo@hotmail.es    ', '                         ');
-INSERT INTO mod_administracion.s_compania VALUES (2, 'Florifrut                ', 'Pedro Luna                    ', '1001079126001  ', '                                                  ', '0978451260     ', '               ', '                         ', '               ', '                              ', 'asdasd@hotmail.es        ', '                         ');
+INSERT INTO mod_administracion.s_compania (codigo_com, nombre_com, nombrerepresentante_com, ruc_com, direccion_com, telefono1_com, telefono2_com, paginaweb_com, fax_com, representante_com, email1_com, email2_com) VALUES (1, 'Dannasoft                ', 'Brian Eduardo Montenegro Tinaj', '1003677422001  ', 'El trbol, calle Caran N-250 y Echeverria                                                                                                              ', '0981747001     ', '062650786      ', 'www.ecuawebhosting.com   ', '               ', '                              ', 'brayanocpo@hotmail.es    ', '                         ');
+INSERT INTO mod_administracion.s_compania (codigo_com, nombre_com, nombrerepresentante_com, ruc_com, direccion_com, telefono1_com, telefono2_com, paginaweb_com, fax_com, representante_com, email1_com, email2_com) VALUES (2, 'Florifrut                ', 'Pedro Luna                    ', '1001079126001  ', '                                                                                                                                                      ', '0978451260     ', '               ', '                         ', '               ', '                              ', 'asdasd@hotmail.es        ', '                         ');
 
 
 --
@@ -33,10 +33,10 @@ INSERT INTO mod_administracion.s_compania VALUES (2, 'Florifrut                '
 -- Data for Name: s_perfil_usuario; Type: TABLE DATA; Schema: mod_administracion; Owner: postgres
 --
 
-INSERT INTO mod_administracion.s_perfil_usuario VALUES (1, 'Administrador                 ');
-INSERT INTO mod_administracion.s_perfil_usuario VALUES (2, 'Usuario1                      ');
-INSERT INTO mod_administracion.s_perfil_usuario VALUES (3, 'Usuario2                      ');
-INSERT INTO mod_administracion.s_perfil_usuario VALUES (4, 'Usuario3                      ');
+INSERT INTO mod_administracion.s_perfil_usuario (codigo_per, nombre_per) VALUES (1, 'Administrador                 ');
+INSERT INTO mod_administracion.s_perfil_usuario (codigo_per, nombre_per) VALUES (2, 'Usuario1                      ');
+INSERT INTO mod_administracion.s_perfil_usuario (codigo_per, nombre_per) VALUES (3, 'Usuario2                      ');
+INSERT INTO mod_administracion.s_perfil_usuario (codigo_per, nombre_per) VALUES (4, 'Usuario3                      ');
 
 
 --
@@ -53,13 +53,13 @@ INSERT INTO mod_administracion.s_perfil_usuario VALUES (4, 'Usuario3            
 -- Data for Name: s_tablas_bdd; Type: TABLE DATA; Schema: mod_administracion; Owner: postgres
 --
 
-INSERT INTO mod_administracion.s_tablas_bdd VALUES (1, 'Usuarios                                ', 's_usuario                     ', 'codigo_usu                    ', 'nombre_usu                    ', '                                                  ', '                                                  ');
-INSERT INTO mod_administracion.s_tablas_bdd VALUES (2, 'Ciudad                                  ', 'v_ciudad                      ', 'codigo_ciu                    ', 'nombre_ciu                    ', '                                                  ', '                                                  ');
-INSERT INTO mod_administracion.s_tablas_bdd VALUES (3, 'Pais                                    ', 'v_pais                        ', 'codigo_pai                    ', 'nombre_pai                    ', '                                                  ', '                                                  ');
-INSERT INTO mod_administracion.s_tablas_bdd VALUES (5, 'Perfil Usuario                          ', 's_perfil_usuario              ', 'codigo_per                    ', 'nombre_per                    ', '                                                  ', '                                                  ');
-INSERT INTO mod_administracion.s_tablas_bdd VALUES (4, 'Tablas BDD                              ', 's_tablas_bdd                  ', 'codigo_tab                    ', 'nombre_tab                    ', '                                                  ', '                                                  ');
-INSERT INTO mod_administracion.s_tablas_bdd VALUES (7, 'Tablas Campos                           ', 's_tablas_campos               ', 'codigo_tac                    ', 'nombre_tac                    ', '                                                  ', '                                                  ');
-INSERT INTO mod_administracion.s_tablas_bdd VALUES (10, 'Tabla Campos Validaciones               ', 's_tablas_campos_val           ', 'codigo_tab                    ', 'nombre_tab                    ', '                                                  ', '                                                  ');
+INSERT INTO mod_administracion.s_tablas_bdd (codigo_tab, nombre_tab, tabla_tab, codigopk_tab, campo_tab, orderby_tab, where_tab) VALUES (1, 'Usuarios                                ', 's_usuario                     ', 'codigo_usu                    ', 'nombre_usu                    ', '                                                  ', '                                                  ');
+INSERT INTO mod_administracion.s_tablas_bdd (codigo_tab, nombre_tab, tabla_tab, codigopk_tab, campo_tab, orderby_tab, where_tab) VALUES (3, 'Pais                                    ', 'v_pais                        ', 'codigo_pai                    ', 'nombre_pai                    ', '                                                  ', '                                                  ');
+INSERT INTO mod_administracion.s_tablas_bdd (codigo_tab, nombre_tab, tabla_tab, codigopk_tab, campo_tab, orderby_tab, where_tab) VALUES (5, 'Perfil Usuario                          ', 's_perfil_usuario              ', 'codigo_per                    ', 'nombre_per                    ', '                                                  ', '                                                  ');
+INSERT INTO mod_administracion.s_tablas_bdd (codigo_tab, nombre_tab, tabla_tab, codigopk_tab, campo_tab, orderby_tab, where_tab) VALUES (4, 'Tablas BDD                              ', 's_tablas_bdd                  ', 'codigo_tab                    ', 'nombre_tab                    ', '                                                  ', '                                                  ');
+INSERT INTO mod_administracion.s_tablas_bdd (codigo_tab, nombre_tab, tabla_tab, codigopk_tab, campo_tab, orderby_tab, where_tab) VALUES (12, 'Tabla Campos Validaciones               ', 's_tablas_campos_val           ', 'codigo_tav                    ', 'nombre_tav                    ', '                                                  ', '                                                  ');
+INSERT INTO mod_administracion.s_tablas_bdd (codigo_tab, nombre_tab, tabla_tab, codigopk_tab, campo_tab, orderby_tab, where_tab) VALUES (7, 'Tablas Campos                           ', 's_tablas_campos               ', 'codigo_tac                    ', 'nombre_tac                    ', '                                                  ', '                                                  ');
+INSERT INTO mod_administracion.s_tablas_bdd (codigo_tab, nombre_tab, tabla_tab, codigopk_tab, campo_tab, orderby_tab, where_tab) VALUES (2, 'Ciudad                                  ', 'v_ciudad                      ', 'codigo_ciu                    ', 'nombre_ciu                    ', '                                                  ', '                                                  ');
 
 
 --
@@ -68,20 +68,26 @@ INSERT INTO mod_administracion.s_tablas_bdd VALUES (10, 'Tabla Campos Validacion
 -- Data for Name: s_tablas_campos_val; Type: TABLE DATA; Schema: mod_administracion; Owner: postgres
 --
 
-INSERT INTO mod_administracion.s_tablas_campos_val VALUES (1, 'Números enteros               ', 'numeros-enteros                                                                                     ');
-INSERT INTO mod_administracion.s_tablas_campos_val VALUES (2, 'Números decimales             ', 'numeros-decimal                                                                                     ');
-INSERT INTO mod_administracion.s_tablas_campos_val VALUES (3, 'Solo letras con espacios      ', 'letras-y-espacios                                                                                   ');
-INSERT INTO mod_administracion.s_tablas_campos_val VALUES (4, 'Alfanumérico con espacios     ', 'alfanumerico-y-espacios                                                                             ');
-INSERT INTO mod_administracion.s_tablas_campos_val VALUES (5, 'Solo letras sin espacios      ', 'letras-sin-espacios                                                                                 ');
-INSERT INTO mod_administracion.s_tablas_campos_val VALUES (6, 'Alfanumérico sin espacios     ', 'alfanumerico-sin-espacios                                                                           ');
+INSERT INTO mod_administracion.s_tablas_campos_val (codigo_tav, nombre_tav, expresion_tav) VALUES (1, 'Números enteros               ', 'numeros-enteros                                                                                     ');
+INSERT INTO mod_administracion.s_tablas_campos_val (codigo_tav, nombre_tav, expresion_tav) VALUES (2, 'Números decimales             ', 'numeros-decimal                                                                                     ');
+INSERT INTO mod_administracion.s_tablas_campos_val (codigo_tav, nombre_tav, expresion_tav) VALUES (3, 'Solo letras con espacios      ', 'letras-y-espacios                                                                                   ');
+INSERT INTO mod_administracion.s_tablas_campos_val (codigo_tav, nombre_tav, expresion_tav) VALUES (5, 'Solo letras sin espacios      ', 'letras-sin-espacios                                                                                 ');
+INSERT INTO mod_administracion.s_tablas_campos_val (codigo_tav, nombre_tav, expresion_tav) VALUES (4, 'Alfanumerico con espacios     ', 'alfanumerico-y-espacios                                                                             ');
+INSERT INTO mod_administracion.s_tablas_campos_val (codigo_tav, nombre_tav, expresion_tav) VALUES (6, 'Alfanumerico sin espacios     ', 'alfanumerico-sin-espacios                                                                           ');
 
 
 --
--- TOC entry 2193 (class 0 OID 16684)
+-- TOC entry 2193 (class 0 OID 16747)
 -- Dependencies: 193
 -- Data for Name: s_tablas_campos; Type: TABLE DATA; Schema: mod_administracion; Owner: postgres
 --
 
+INSERT INTO mod_administracion.s_tablas_campos (codigo_tac, codigo_tab, codigo_tav, nombre_tac, nombrecampobdd_tac, mascara_tac, minlength, orden_tac) VALUES (3, 2, 1, 'Alterno                       ', 'alterno_ciu                   ', '                                                  ', NULL, 2);
+INSERT INTO mod_administracion.s_tablas_campos (codigo_tac, codigo_tab, codigo_tav, nombre_tac, nombrecampobdd_tac, mascara_tac, minlength, orden_tac) VALUES (4, 2, 1, 'codigo_ciu                    ', 'codigo_ciu                    ', '                                                  ', NULL, 3);
+INSERT INTO mod_administracion.s_tablas_campos (codigo_tac, codigo_tab, codigo_tav, nombre_tac, nombrecampobdd_tac, mascara_tac, minlength, orden_tac) VALUES (6, 3, 1, 'Alterno                       ', 'alterno_pai                   ', '                                                  ', 3, 2);
+INSERT INTO mod_administracion.s_tablas_campos (codigo_tac, codigo_tab, codigo_tav, nombre_tac, nombrecampobdd_tac, mascara_tac, minlength, orden_tac) VALUES (5, 3, 4, 'Pais                          ', 'nombre_pai                    ', '                                                  ', 2, 1);
+INSERT INTO mod_administracion.s_tablas_campos (codigo_tac, codigo_tab, codigo_tav, nombre_tac, nombrecampobdd_tac, mascara_tac, minlength, orden_tac) VALUES (7, 3, 1, 'Codigo                        ', 'codigo_pai                    ', '                                                  ', NULL, 3);
+INSERT INTO mod_administracion.s_tablas_campos (codigo_tac, codigo_tab, codigo_tav, nombre_tac, nombrecampobdd_tac, mascara_tac, minlength, orden_tac) VALUES (2, 2, 4, 'Ciudad                        ', 'nombre_ciu                    ', '                                                  ', 2, 1);
 
 
 --
@@ -90,7 +96,7 @@ INSERT INTO mod_administracion.s_tablas_campos_val VALUES (6, 'Alfanumérico sin
 -- Data for Name: s_usuario; Type: TABLE DATA; Schema: mod_administracion; Owner: postgres
 --
 
-INSERT INTO mod_administracion.s_usuario VALUES (5, 'asd                                               ', 'asdasd      ', 'asd         ', 1);
+INSERT INTO mod_administracion.s_usuario (codigo_usu, nombre_usu, usuario_usu, clave_usu, codigo_per) VALUES (7, 'Brian                                             ', 'Brian88     ', '12345       ', 1);
 
 
 --
@@ -99,16 +105,15 @@ INSERT INTO mod_administracion.s_usuario VALUES (5, 'asd                        
 -- Data for Name: v_pais; Type: TABLE DATA; Schema: mod_administracion; Owner: postgres
 --
 
-INSERT INTO mod_administracion.v_pais VALUES (121, 'Ecuador             ', '                    ');
-INSERT INTO mod_administracion.v_pais VALUES (122, 'Colombia            ', '                    ');
-INSERT INTO mod_administracion.v_pais VALUES (113, 'Peru                ', 'sd                  ');
-INSERT INTO mod_administracion.v_pais VALUES (123, 'Bolivia             ', '                    ');
-INSERT INTO mod_administracion.v_pais VALUES (124, 'Argentina           ', '                    ');
-INSERT INTO mod_administracion.v_pais VALUES (125, 'Venezuela           ', '                    ');
-INSERT INTO mod_administracion.v_pais VALUES (126, 'Costa Rica          ', '                    ');
-INSERT INTO mod_administracion.v_pais VALUES (127, 'Italia              ', '                    ');
-INSERT INTO mod_administracion.v_pais VALUES (128, 'Rusia               ', '                    ');
-INSERT INTO mod_administracion.v_pais VALUES (129, 'Mexico              ', '                    ');
+INSERT INTO mod_administracion.v_pais (codigo_pai, nombre_pai, alterno_pai) VALUES (123, 'Bolivia             ', 'Prueba Bolivia      ');
+INSERT INTO mod_administracion.v_pais (codigo_pai, nombre_pai, alterno_pai) VALUES (122, 'Colombia            ', 'Prueba Colombia     ');
+INSERT INTO mod_administracion.v_pais (codigo_pai, nombre_pai, alterno_pai) VALUES (126, 'Costa Rica          ', 'Prueba Costarrica   ');
+INSERT INTO mod_administracion.v_pais (codigo_pai, nombre_pai, alterno_pai) VALUES (121, 'Ecuador             ', 'Prueba Ecuador      ');
+INSERT INTO mod_administracion.v_pais (codigo_pai, nombre_pai, alterno_pai) VALUES (130, 'Rusia               ', 'Prueba rusia        ');
+INSERT INTO mod_administracion.v_pais (codigo_pai, nombre_pai, alterno_pai) VALUES (129, 'México              ', 'prueba Mexico       ');
+INSERT INTO mod_administracion.v_pais (codigo_pai, nombre_pai, alterno_pai) VALUES (127, 'Italia              ', 'prueba italia       ');
+INSERT INTO mod_administracion.v_pais (codigo_pai, nombre_pai, alterno_pai) VALUES (124, 'Argentina           ', 'prueba argentiana   ');
+INSERT INTO mod_administracion.v_pais (codigo_pai, nombre_pai, alterno_pai) VALUES (131, 'p1                  ', 'p1                  ');
 
 
 --
@@ -117,12 +122,12 @@ INSERT INTO mod_administracion.v_pais VALUES (129, 'Mexico              ', '    
 -- Data for Name: v_ciudad; Type: TABLE DATA; Schema: mod_administracion; Owner: postgres
 --
 
-INSERT INTO mod_administracion.v_ciudad VALUES (171, 'Quito               ', 'UIO                 ', 121);
-INSERT INTO mod_administracion.v_ciudad VALUES (172, 'Ambato              ', '                    ', 121);
-INSERT INTO mod_administracion.v_ciudad VALUES (173, 'Loja                ', '                    ', 121);
-INSERT INTO mod_administracion.v_ciudad VALUES (174, 'Ibarra              ', '                    ', 121);
-INSERT INTO mod_administracion.v_ciudad VALUES (175, 'Cuenca              ', '                    ', 121);
-INSERT INTO mod_administracion.v_ciudad VALUES (176, 'Latacunga           ', '                    ', 121);
+INSERT INTO mod_administracion.v_ciudad (codigo_ciu, nombre_ciu, alterno_ciu, codigo_pai) VALUES (172, 'Ambato              ', '                    ', 121);
+INSERT INTO mod_administracion.v_ciudad (codigo_ciu, nombre_ciu, alterno_ciu, codigo_pai) VALUES (174, 'Ibarra              ', '                    ', 121);
+INSERT INTO mod_administracion.v_ciudad (codigo_ciu, nombre_ciu, alterno_ciu, codigo_pai) VALUES (175, 'Cuenca              ', '                    ', 121);
+INSERT INTO mod_administracion.v_ciudad (codigo_ciu, nombre_ciu, alterno_ciu, codigo_pai) VALUES (177, 'La paz              ', '                    ', 124);
+INSERT INTO mod_administracion.v_ciudad (codigo_ciu, nombre_ciu, alterno_ciu, codigo_pai) VALUES (178, 'Quito               ', '                    ', 121);
+INSERT INTO mod_administracion.v_ciudad (codigo_ciu, nombre_ciu, alterno_ciu, codigo_pai) VALUES (179, 'Tulcan              ', '                    ', 121);
 
 
 --
@@ -131,11 +136,11 @@ INSERT INTO mod_administracion.v_ciudad VALUES (176, 'Latacunga           ', '  
 -- Data for Name: v_estado; Type: TABLE DATA; Schema: mod_administracion; Owner: postgres
 --
 
-INSERT INTO mod_administracion.v_estado VALUES (106, 'Caranqui                                          ', 174);
-INSERT INTO mod_administracion.v_estado VALUES (107, 'Urcuqui                                           ', 174);
-INSERT INTO mod_administracion.v_estado VALUES (108, 'Alpachaca                                         ', 174);
-INSERT INTO mod_administracion.v_estado VALUES (109, 'yacucalle                                         ', 174);
-INSERT INTO mod_administracion.v_estado VALUES (110, 'los ciebos                                        ', 174);
+INSERT INTO mod_administracion.v_estado (codigo_est, nombre_est, codigo_ciu) VALUES (106, 'Caranqui                                          ', 174);
+INSERT INTO mod_administracion.v_estado (codigo_est, nombre_est, codigo_ciu) VALUES (107, 'Urcuqui                                           ', 174);
+INSERT INTO mod_administracion.v_estado (codigo_est, nombre_est, codigo_ciu) VALUES (108, 'Alpachaca                                         ', 174);
+INSERT INTO mod_administracion.v_estado (codigo_est, nombre_est, codigo_ciu) VALUES (109, 'yacucalle                                         ', 174);
+INSERT INTO mod_administracion.v_estado (codigo_est, nombre_est, codigo_ciu) VALUES (110, 'los ciebos                                        ', 174);
 
 
 --
@@ -171,7 +176,7 @@ SELECT pg_catalog.setval('mod_administracion.s_sucursal_codigo_suc_seq', 1, fals
 -- Name: s_tablas_bdd_codigo_tab_seq; Type: SEQUENCE SET; Schema: mod_administracion; Owner: postgres
 --
 
-SELECT pg_catalog.setval('mod_administracion.s_tablas_bdd_codigo_tab_seq', 2, true);
+SELECT pg_catalog.setval('mod_administracion.s_tablas_bdd_codigo_tab_seq', 12, true);
 
 
 --
@@ -180,7 +185,7 @@ SELECT pg_catalog.setval('mod_administracion.s_tablas_bdd_codigo_tab_seq', 2, tr
 -- Name: s_tablas_campos_codigo_tac_seq; Type: SEQUENCE SET; Schema: mod_administracion; Owner: postgres
 --
 
-SELECT pg_catalog.setval('mod_administracion.s_tablas_campos_codigo_tac_seq', 1, false);
+SELECT pg_catalog.setval('mod_administracion.s_tablas_campos_codigo_tac_seq', 7, true);
 
 
 --
@@ -189,7 +194,7 @@ SELECT pg_catalog.setval('mod_administracion.s_tablas_campos_codigo_tac_seq', 1,
 -- Name: s_tablas_campos_val_codigo_tav_seq; Type: SEQUENCE SET; Schema: mod_administracion; Owner: postgres
 --
 
-SELECT pg_catalog.setval('mod_administracion.s_tablas_campos_val_codigo_tav_seq', 6, true);
+SELECT pg_catalog.setval('mod_administracion.s_tablas_campos_val_codigo_tav_seq', 7, true);
 
 
 --
@@ -198,7 +203,7 @@ SELECT pg_catalog.setval('mod_administracion.s_tablas_campos_val_codigo_tav_seq'
 -- Name: s_usuario_codigo_usu_seq; Type: SEQUENCE SET; Schema: mod_administracion; Owner: postgres
 --
 
-SELECT pg_catalog.setval('mod_administracion.s_usuario_codigo_usu_seq', 5, true);
+SELECT pg_catalog.setval('mod_administracion.s_usuario_codigo_usu_seq', 7, true);
 
 
 --
@@ -207,7 +212,7 @@ SELECT pg_catalog.setval('mod_administracion.s_usuario_codigo_usu_seq', 5, true)
 -- Name: v_ciudad_codigo_ciu_seq; Type: SEQUENCE SET; Schema: mod_administracion; Owner: postgres
 --
 
-SELECT pg_catalog.setval('mod_administracion.v_ciudad_codigo_ciu_seq', 176, true);
+SELECT pg_catalog.setval('mod_administracion.v_ciudad_codigo_ciu_seq', 180, true);
 
 
 --
@@ -225,10 +230,10 @@ SELECT pg_catalog.setval('mod_administracion.v_estado_codigo_est_seq', 110, true
 -- Name: v_pais_codigo_pai_seq; Type: SEQUENCE SET; Schema: mod_administracion; Owner: postgres
 --
 
-SELECT pg_catalog.setval('mod_administracion.v_pais_codigo_pai_seq', 129, true);
+SELECT pg_catalog.setval('mod_administracion.v_pais_codigo_pai_seq', 131, true);
 
 
--- Completed on 2018-10-04 17:26:31 -05
+-- Completed on 2018-10-05 16:39:41 -05
 
 --
 -- PostgreSQL database dump complete
