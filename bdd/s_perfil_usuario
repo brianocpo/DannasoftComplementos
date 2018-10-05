@@ -1,0 +1,24 @@
+-- Table: mod_administracion.s_perfil_usuario
+
+-- DROP TABLE mod_administracion.s_perfil_usuario;
+
+CREATE TABLE mod_administracion.s_perfil_usuario
+(
+  codigo_per serial NOT NULL,
+  nombre_per character(30) NOT NULL,
+  CONSTRAINT "PK_s_perfil_usuario" PRIMARY KEY (codigo_per)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE mod_administracion.s_perfil_usuario
+  OWNER TO postgres;
+
+-- Index: mod_administracion."Index_s_perfil_usuario_codigo_per"
+
+-- DROP INDEX mod_administracion."Index_s_perfil_usuario_codigo_per";
+
+CREATE INDEX "Index_s_perfil_usuario_codigo_per"
+  ON mod_administracion.s_perfil_usuario
+  USING btree
+  (codigo_per);
