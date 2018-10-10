@@ -8,7 +8,8 @@ CREATE TABLE mod_administracion.s_usuario
   nombre_usu character(50) NOT NULL,
   usuario_usu character(12) NOT NULL,
   clave_usu character(12) NOT NULL,
-  codigo_per integer NOT NULL,
+  codigo_per integer,
+  fechacaducidad_usu date,
   CONSTRAINT "PK_s_usuario" PRIMARY KEY (codigo_usu),
   CONSTRAINT "FK_s_usuario_vs_s_perfil_usuario" FOREIGN KEY (codigo_per)
       REFERENCES mod_administracion.s_perfil_usuario (codigo_per) MATCH SIMPLE
