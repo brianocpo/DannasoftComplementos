@@ -38,6 +38,57 @@ CREATE INDEX "Index_s_compania_codigo_com"
 
 
 
+-- Table: sistema.s_sucursal
+
+-- DROP TABLE sistema.s_sucursal;
+
+CREATE TABLE sistema.s_sucursal
+(
+  codigo_suc serial NOT NULL,
+  nombre_suc character(25) NOT NULL,
+  ruc_suc character(15),
+  direccion_suc character(50),
+  telefono1_suc character(15) NOT NULL,
+  telefono2_suc character(15),
+  email1_suc character(50) NOT NULL,
+  email2_suc character(50),
+  fax_suc character(15),
+  codigo_com integer,
+  CONSTRAINT "PK_codigo_suc" PRIMARY KEY (codigo_suc),
+  CONSTRAINT "FK_s_compania_vs_s_sucursal" FOREIGN KEY (codigo_com)
+      REFERENCES sistema.s_compania (codigo_com) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT s_sucursal_nombre_suc_key UNIQUE (nombre_suc),
+  CONSTRAINT s_sucursal_ruc_suc_key UNIQUE (ruc_suc)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE sistema.s_sucursal
+  OWNER TO postgres;
+
+-- Index: sistema."Index_s_sucursal_codigo_com"
+
+-- DROP INDEX sistema."Index_s_sucursal_codigo_com";
+
+CREATE INDEX "Index_s_sucursal_codigo_com"
+  ON sistema.s_sucursal
+  USING btree
+  (codigo_com);
+
+-- Index: sistema."Index_s_sucursal_codigo_suc"
+
+-- DROP INDEX sistema."Index_s_sucursal_codigo_suc";
+
+CREATE INDEX "Index_s_sucursal_codigo_suc"
+  ON sistema.s_sucursal
+  USING btree
+  (codigo_suc);
+
+
+
+
+
 -- Table: sistema.s_estado_dato
 
 -- DROP TABLE sistema.s_estado_dato;
@@ -46,7 +97,7 @@ CREATE TABLE sistema.s_estado_dato
 (
   codigo_est serial NOT NULL,
   nombre_est character(10) NOT NULL,
-  CONSTRAINT "PK_codigo_est" PRIMARY KEY (codigo_est)
+  CONSTRAINT "PK_s_estado_dato_codigo_est" PRIMARY KEY (codigo_est)
 )
 WITH (
   OIDS=FALSE
@@ -62,6 +113,7 @@ CREATE INDEX index_s_estado_dato_codigo_est
   ON sistema.s_estado_dato
   USING btree
   (codigo_est);
+
 
 
 
@@ -96,6 +148,8 @@ CREATE INDEX "Index_s_modulos_codigo_mod"
 
 
 
+
+
 -- Table: sistema.s_perfil_usuario
 
 -- DROP TABLE sistema.s_perfil_usuario;
@@ -105,8 +159,8 @@ CREATE TABLE sistema.s_perfil_usuario
   codigo_per serial NOT NULL,
   nombre_per character(30) NOT NULL,
   codigo_est integer,
-  CONSTRAINT "PK_codigo_per" PRIMARY KEY (codigo_per),
-  CONSTRAINT "FK_s_perfil_usuarios_codigo_est" FOREIGN KEY (codigo_est)
+  CONSTRAINT "PK_s_perfil_usuario" PRIMARY KEY (codigo_per),
+  CONSTRAINT "FK_s_perfil_usuarios_vs_s_estado_dato" FOREIGN KEY (codigo_est)
       REFERENCES sistema.s_estado_dato (codigo_est) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
 )
@@ -137,54 +191,6 @@ CREATE INDEX "Index_s_perfil_usuario_codigo_per"
 
 
 
--- Table: sistema.s_sucursal
-
--- DROP TABLE sistema.s_sucursal;
-
-CREATE TABLE sistema.s_sucursal
-(
-  codigo_suc serial NOT NULL,
-  nombre_suc character(25) NOT NULL,
-  ruc_suc character(15),
-  direccion_suc character(50),
-  telefono1_suc character(15) NOT NULL,
-  telefono2_suc character(15),
-  email1_suc character(50) NOT NULL,
-  email2_suc character(50),
-  fax_suc character(15),
-  codigo_com integer,
-  CONSTRAINT "PK_codigo_suc" PRIMARY KEY (codigo_suc),
-  CONSTRAINT "FK_s_sucursal_codigo_com" FOREIGN KEY (codigo_com)
-      REFERENCES sistema.s_compania (codigo_com) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION,
-  CONSTRAINT s_sucursal_nombre_suc_key UNIQUE (nombre_suc),
-  CONSTRAINT s_sucursal_ruc_suc_key UNIQUE (ruc_suc)
-)
-WITH (
-  OIDS=FALSE
-);
-ALTER TABLE sistema.s_sucursal
-  OWNER TO postgres;
-
--- Index: sistema."Index_s_sucursal_codigo_com"
-
--- DROP INDEX sistema."Index_s_sucursal_codigo_com";
-
-CREATE INDEX "Index_s_sucursal_codigo_com"
-  ON sistema.s_sucursal
-  USING btree
-  (codigo_com);
-
--- Index: sistema."Index_s_sucursal_codigo_suc"
-
--- DROP INDEX sistema."Index_s_sucursal_codigo_suc";
-
-CREATE INDEX "Index_s_sucursal_codigo_suc"
-  ON sistema.s_sucursal
-  USING btree
-  (codigo_suc);
-
-
 
 
 -- Table: sistema.s_tablas_bdd
@@ -202,7 +208,7 @@ CREATE TABLE sistema.s_tablas_bdd
   condicion_tab character(50),
   codigo_mod integer,
   CONSTRAINT "PK_codigo_tab" PRIMARY KEY (codigo_tab),
-  CONSTRAINT "FK_s_tablas_bdd_codigo_mod" FOREIGN KEY (codigo_mod)
+  CONSTRAINT "FK_s_tablas_bdd_vs_s_modulo" FOREIGN KEY (codigo_mod)
       REFERENCES sistema.s_modulos (codigo_mod) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
 )
@@ -229,6 +235,8 @@ CREATE INDEX "Index_s_tablas_bdd_codigo_tab"
   ON sistema.s_tablas_bdd
   USING btree
   (codigo_tab);
+
+
 
 
 
@@ -264,6 +272,38 @@ CREATE INDEX "Index_s_tablas_campos_val_codigo_tav"
 
 
 
+
+-- Table: sistema.s_variables
+
+-- DROP TABLE sistema.s_variables;
+
+CREATE TABLE sistema.s_variables
+(
+  codigo_var serial NOT NULL,
+  nombre_var character(40) NOT NULL,
+  descripcion_var character(100) NOT NULL,
+  valor_var character(50) NOT NULL,
+  CONSTRAINT "PK_codigo_var" PRIMARY KEY (codigo_var)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE sistema.s_variables
+  OWNER TO postgres;
+
+-- Index: sistema."Index_s_variables_codigo_var"
+
+-- DROP INDEX sistema."Index_s_variables_codigo_var";
+
+CREATE INDEX "Index_s_variables_codigo_var"
+  ON sistema.s_variables
+  USING btree
+  (codigo_var);
+
+
+
+
+
 -- Table: sistema.s_usuario
 
 -- DROP TABLE sistema.s_usuario;
@@ -277,11 +317,11 @@ CREATE TABLE sistema.s_usuario
   codigo_per integer,
   fechacaducidad_usu date,
   codigo_est integer,
-  CONSTRAINT "PK_codigo_usu" PRIMARY KEY (codigo_usu),
-  CONSTRAINT "FK_s_usuario_codigo_est" FOREIGN KEY (codigo_est)
+  CONSTRAINT "PK_s_usuario" PRIMARY KEY (codigo_usu),
+  CONSTRAINT "FK_s_usuario_vs_s_estado_dato" FOREIGN KEY (codigo_est)
       REFERENCES sistema.s_estado_dato (codigo_est) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION,
-  CONSTRAINT "FK_s_usuario_codigo_per" FOREIGN KEY (codigo_per)
+  CONSTRAINT "FK_s_usuario_vs_s_perfil_usuario" FOREIGN KEY (codigo_per)
       REFERENCES sistema.s_perfil_usuario (codigo_per) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION,
   CONSTRAINT s_usuario_usuario_usu_key UNIQUE (usuario_usu)
@@ -319,37 +359,6 @@ CREATE INDEX "Index_s_usuario_codigo_usu"
   USING btree
   (codigo_usu);
 
-
-
-
-
-
--- Table: sistema.s_variables
-
--- DROP TABLE sistema.s_variables;
-
-CREATE TABLE sistema.s_variables
-(
-  codigo_var serial NOT NULL,
-  nombre_var character(40) NOT NULL,
-  descripcion_var character(100) NOT NULL,
-  valor_var character(50) NOT NULL,
-  CONSTRAINT "PK_codigo_var" PRIMARY KEY (codigo_var)
-)
-WITH (
-  OIDS=FALSE
-);
-ALTER TABLE sistema.s_variables
-  OWNER TO postgres;
-
--- Index: sistema."Index_s_variables_codigo_var"
-
--- DROP INDEX sistema."Index_s_variables_codigo_var";
-
-CREATE INDEX "Index_s_variables_codigo_var"
-  ON sistema.s_variables
-  USING btree
-  (codigo_var);
 
 
 
@@ -409,5 +418,4 @@ CREATE INDEX "Index_s_tablas_campos_codigo_tav"
   ON sistema.s_tablas_campos
   USING btree
   (codigo_tav);
-
 
