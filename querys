@@ -1,4 +1,0 @@
-SELECT nombrecampobdd_tac,orden_tac,minlength,expresion_tav FROM 
-mod_administracion.s_tablas_bdd tb left join mod_administracion.s_tablas_campos tc on tb.codigo_tab=tc.codigo_tab
-left join mod_administracion.s_tablas_campos_val tv on tc.codigo_tav=tv.codigo_tav
-where tabla_tab='v_pais'
